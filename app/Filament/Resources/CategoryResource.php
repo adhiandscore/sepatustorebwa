@@ -13,6 +13,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\FileUpload;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
 
 class CategoryResource extends Resource
 {
@@ -30,8 +33,13 @@ class CategoryResource extends Resource
                 ->required()
                 ->maxLength(255),
                 
-
-
+                FileUpload::make('icon')
+                ->directory('icons')
+                ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/svg+xml'])
+                ->maxSize(2048)
+                ->required()
+                
+                
             ]);
     }
 
@@ -39,7 +47,11 @@ class CategoryResource extends Resource
     {
         return $table
             ->columns([
-                // data apa yang ingin ditampilkan
+                TextColumn::make('name')
+                ->searchable(),
+                
+                ImageColumn::make('icon')
+                ->circular(),
             ])
             ->filters([
                 //filter data berdasarkan
