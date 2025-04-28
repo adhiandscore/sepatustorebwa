@@ -1,6 +1,5 @@
 # SepatuStoreBWA  
-A Laravel-based application for managing a shoe store. This project uses Filament for the admin panel and is designed to provide a clean and efficient user experience.
-
+Belajar bikin web toko produk sepatu menggunakan Laravel Filament sebagai CMS nya 
 ---
 
 ## 🚀 Features  
